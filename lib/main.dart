@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pathverse_app/screens/home_screen.dart';
 import 'package:pathverse_app/screens/login_screen.dart';
@@ -15,10 +16,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LoginScreen(),
+      home: HomeScreen(),
+      // home: LoginScreen(),
       routes: {
         HomeScreen.route: (context) => HomeScreen(),
       },
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown
+        },
+      ),
     );
   }
 }

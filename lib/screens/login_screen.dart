@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pathverse_app/helper/app_colors.dart';
 import 'package:pathverse_app/helper/helper.dart';
+import 'package:pathverse_app/screens/home_screen.dart';
 import 'package:pathverse_app/widgets/custom_button.dart';
 import 'package:pathverse_app/widgets/custom_text_field.dart';
 
@@ -18,7 +19,7 @@ class LoginScreen extends StatelessWidget {
       body: Center(
         child: Container(
           decoration: BoxDecoration(
-            color: backgroundColor,
+            color: shadowColor,
             borderRadius: BorderRadius.circular(15),
             boxShadow: const [
               BoxShadow(
@@ -61,7 +62,14 @@ class LoginScreen extends StatelessWidget {
                   textColor: textColorWhite,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      print('object');
+                      // Navigator.pushAndRemoveUntil(context, HomeScreen.route);
+                      Navigator.pushAndRemoveUntil<void>(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) => const HomeScreen(),
+                        ),
+                        ModalRoute.withName(HomeScreen.route),
+                      );
                     }
                   },
                 )
