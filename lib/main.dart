@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: HomeScreen(),
+      // home: const LoginScreen(),
       routes: {
-        HomeScreen.route: (context) => const HomeScreen(),
+        HomeScreen.route: (context) => HomeScreen(),
       },
     );
   }
