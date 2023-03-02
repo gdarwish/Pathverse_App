@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pathverse_app/screens/home_screen.dart';
+import 'package:pathverse_app/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Text('hi'),
+      home: const LoginScreen(),
+      routes: {
+        HomeScreen.route: (context) => const HomeScreen(),
+      },
     );
   }
 }
