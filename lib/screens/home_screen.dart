@@ -7,7 +7,7 @@ import 'package:pathverse_app/bloc/post/post_state.dart';
 import 'package:pathverse_app/helper/app_colors.dart';
 import 'package:pathverse_app/screens/login_screen.dart';
 import 'package:pathverse_app/widgets/error_screen.dart';
-import 'package:pathverse_app/widgets/home_widget.dart';
+import 'package:pathverse_app/widgets/custom_post_list.dart';
 import 'package:pathverse_app/widgets/progress_indicator.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:get/get.dart';

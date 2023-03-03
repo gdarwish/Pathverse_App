@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pathverse_app/models/comment.dart';
 import 'package:pathverse_app/models/post.dart';
 
 class ApiService {
@@ -26,6 +27,21 @@ class ApiService {
       return (response.data as List)
           .map(
             (data) => Post.fromJson(data),
+          )
+          .toList();
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+    }
+    return null;
+  }
+
+  Future<List<Comment>?> fetchCommentList({required String postId}) async {
+    try {
+      Response response = await _dio
+          .get('https://jsonplaceholder.typicode.com/posts/$postId/comments');
+      return (response.data as List)
+          .map(
+            (data) => Comment.fromJson(data),
           )
           .toList();
     } catch (error, stacktrace) {

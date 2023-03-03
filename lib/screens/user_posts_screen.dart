@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pathverse_app/bloc/user-post/user_post_state.dart';
 import 'package:pathverse_app/helper/app_colors.dart';
 import 'package:pathverse_app/widgets/error_screen.dart';
-import 'package:pathverse_app/widgets/home_widget.dart';
+import 'package:pathverse_app/widgets/custom_post_list.dart';
 import 'package:pathverse_app/widgets/progress_indicator.dart';
 
 class UserPostsScreen extends StatefulWidget {
