@@ -16,7 +16,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      theme: ThemeData(
+        primaryColor: Colors.white,
+        textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+            color: Colors.white,
+            fontSize: 46,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+      ),
       home: HomeScreen(),
+
       // home: LoginScreen(),
       routes: {
         HomeScreen.route: (context) => HomeScreen(),

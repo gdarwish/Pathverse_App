@@ -8,6 +8,7 @@ import 'package:pathverse_app/helper/app_colors.dart';
 import 'package:pathverse_app/widgets/error_screen.dart';
 import 'package:pathverse_app/widgets/home_widget.dart';
 import 'package:pathverse_app/widgets/progress_indicator.dart';
+import 'package:sidebarx/sidebarx.dart';
 
 class HomeScreen extends StatefulWidget {
   static const route = '/HomeScreen';
@@ -30,12 +31,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: AppBar(
-        // title: const Text('Home'),
-        backgroundColor: primaryColor,
+      body: Row(
+        children: [
+          //* SideBar
+          CustomAppSideBar(),
+          //* screen body
+          HomeScreenBody(postBloc: postBloc),
+        ],
       ),
-      body: BlocProvider(
+    );
+  }
+}
+
+class HomeScreenBody extends StatelessWidget {
+  const HomeScreenBody({
+    Key? key,
+    required this.postBloc,
+  }) : super(key: key);
+
+  final PostBloc postBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: BlocProvider(
         create: (context) => postBloc,
         child: BlocListener<PostBloc, PostState>(
           listener: (context, state) {
@@ -64,6 +83,50 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class CustomAppSideBar extends StatelessWidget {
+  final SidebarXController controller = SidebarXController(selectedIndex: 0);
+
+  CustomAppSideBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SidebarX(
+      headerDivider: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: Image.asset('assets/images/logo2.png'),
+      ),
+      extendedTheme: const SidebarXTheme(
+        width: 100,
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+      ),
+      controller: controller,
+      theme: const SidebarXTheme(
+        iconTheme: IconThemeData(color: Colors.white),
+        textStyle: TextStyle(color: Colors.white),
+        decoration: BoxDecoration(
+          color: primaryColor,
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+      ),
+      items: const [
+        SidebarXItem(
+          icon: Icons.home,
+          label: 'Home',
+        ),
+      ],
     );
   }
 }

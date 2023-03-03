@@ -43,7 +43,6 @@ class HomeWidget extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 3),
                   Text(
                     post.title,
                     style: const TextStyle(
@@ -59,7 +58,6 @@ class HomeWidget extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 3),
                   ReadMoreText(
                     post.body,
                     trimLines: 2,
