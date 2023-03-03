@@ -53,6 +53,7 @@ dev_dependencies:
   flutter_bloc: ^8.1.2
   readmore: ^2.1.0
   sidebarx: ^0.14.0
+  get: ^4.6.5
 
 
 # For information on the generic Dart part of this file, see the

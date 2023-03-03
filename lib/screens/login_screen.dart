@@ -4,6 +4,7 @@ import 'package:pathverse_app/helper/helper.dart';
 import 'package:pathverse_app/screens/home_screen.dart';
 import 'package:pathverse_app/widgets/custom_button.dart';
 import 'package:pathverse_app/widgets/custom_text_field.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   static const route = '/LoginScreen';
@@ -62,14 +63,7 @@ class LoginScreen extends StatelessWidget {
                   textColor: textColorWhite,
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      // Navigator.pushAndRemoveUntil(context, HomeScreen.route);
-                      Navigator.pushAndRemoveUntil<void>(
-                        context,
-                        MaterialPageRoute<void>(
-                          builder: (BuildContext context) => const HomeScreen(),
-                        ),
-                        ModalRoute.withName(HomeScreen.route),
-                      );
+                      Get.offAndToNamed(HomeScreen.route);
                     }
                   },
                 )

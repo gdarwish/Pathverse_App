@@ -5,10 +5,12 @@ import 'package:pathverse_app/bloc/post/post_bloc.dart';
 import 'package:pathverse_app/bloc/post/post_event.dart';
 import 'package:pathverse_app/bloc/post/post_state.dart';
 import 'package:pathverse_app/helper/app_colors.dart';
+import 'package:pathverse_app/screens/login_screen.dart';
 import 'package:pathverse_app/widgets/error_screen.dart';
 import 'package:pathverse_app/widgets/home_widget.dart';
 import 'package:pathverse_app/widgets/progress_indicator.dart';
 import 'package:sidebarx/sidebarx.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   static const route = '/HomeScreen';
@@ -73,7 +75,10 @@ class HomeScreenBody extends StatelessWidget {
               } else if (state is PostLoading) {
                 return const LoadingWidget();
               } else if (state is PostLoaded) {
-                return HomeWidget(postList: state.postList);
+                return CustomPostList(
+                  postList: state.postList,
+                  isUserPostScreen: false,
+                );
               } else if (state is PostError) {
                 return ErrorScreen(errorMessage: state.message!);
               } else {
@@ -100,7 +105,7 @@ class CustomAppSideBar extends StatelessWidget {
         child: Image.asset('assets/images/logo2.png'),
       ),
       extendedTheme: const SidebarXTheme(
-        width: 100,
+        width: 150,
         decoration: BoxDecoration(
           color: secondaryColor,
           borderRadius: BorderRadius.only(
@@ -121,11 +126,19 @@ class CustomAppSideBar extends StatelessWidget {
           ),
         ),
       ),
-      items: const [
+      items: [
         SidebarXItem(
           icon: Icons.home,
           label: 'Home',
         ),
+      ],
+      footerItems: [
+        SidebarXItem(
+            icon: Icons.output_rounded,
+            label: 'Sign Out',
+            onTap: () {
+              Get.toNamed(LoginScreen.route);
+            }),
       ],
     );
   }

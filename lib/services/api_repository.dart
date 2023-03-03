@@ -7,6 +7,10 @@ class ApiRepository {
   Future<List<Post>?> fetchPostList() {
     return _provider.fetchPostList();
   }
+
+  Future<List<Post>?> fetchUserPostList({required String userId}) {
+    return _provider.fetchUserPostList(userId: userId);
+  }
 }
 
 class NetworkError extends Error {}

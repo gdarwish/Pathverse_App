@@ -18,4 +18,19 @@ class ApiService {
     }
     return null;
   }
+
+  Future<List<Post>?> fetchUserPostList({required String userId}) async {
+    try {
+      Response response = await _dio
+          .get('https://jsonplaceholder.typicode.com/users/$userId/posts');
+      return (response.data as List)
+          .map(
+            (data) => Post.fromJson(data),
+          )
+          .toList();
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+    }
+    return null;
+  }
 }

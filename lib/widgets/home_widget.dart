@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:pathverse_app/helper/app_colors.dart';
 import 'package:pathverse_app/models/post.dart';
+import 'package:pathverse_app/screens/comment_screen.dart';
+import 'package:pathverse_app/screens/user_posts_screen.dart';
+import 'package:pathverse_app/widgets/custom_button.dart';
 import 'package:readmore/readmore.dart';
+import 'package:get/get.dart';
 
-class HomeWidget extends StatelessWidget {
+class CustomPostList extends StatelessWidget {
   final List<Post> postList;
-  const HomeWidget({
+  final bool isUserPostScreen;
+  const CustomPostList({
     Key? key,
     required this.postList,
+    required this.isUserPostScreen,
   }) : super(key: key);
 
   @override
@@ -28,12 +35,47 @@ class HomeWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "ID: ${post.id}",
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          if (!isUserPostScreen) {
+                            Get.toNamed(UserPostsScreen.route,
+                                arguments: post.id);
+                          }
+                        },
+                        child: Container(
+                          decoration: !isUserPostScreen
+                              ? const BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                        width: 1.0, color: Colors.blue),
+                                  ),
+                                )
+                              : null,
+                          child: Text(
+                            "ID: ${post.id}",
+                            style: const TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      if (isUserPostScreen)
+                        CustomButton(
+                          customWidth: 110,
+                          primaryColor: secondaryColor,
+                          buttonText: 'Comments',
+                          elevation: 1,
+                          textColor: Colors.white,
+                          onTap: () {
+                            Get.toNamed(CommentsScreen.route,
+                                arguments: post.id);
+                          },
+                        )
+                    ],
                   ),
                   const SizedBox(height: 5),
                   const Text(
