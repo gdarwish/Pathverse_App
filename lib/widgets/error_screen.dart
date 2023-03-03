@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:pathverse_app/helper/app_colors.dart';
+import 'package:pathverse_app/helper/app_text.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String errorMessage;
@@ -19,7 +20,7 @@ class ErrorScreen extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             errorMessage,
-            style: const TextStyle(fontSize: 25),
+            style: text2,
           )
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pathverse_app/helper/app_text.dart';
 
 class CustomButton extends StatelessWidget {
   final Color primaryColor;
@@ -35,7 +36,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           buttonText,
-          style: TextStyle(fontSize: 15),
+          style: text4,
         ),
       ),
     );

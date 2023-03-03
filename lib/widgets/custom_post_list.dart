@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pathverse_app/helper/app_colors.dart';
+import 'package:pathverse_app/helper/app_text.dart';
 import 'package:pathverse_app/models/post.dart';
 import 'package:pathverse_app/screens/comment_screen.dart';
 import 'package:pathverse_app/screens/user_posts_screen.dart';
@@ -56,10 +57,7 @@ class CustomPostList extends StatelessWidget {
                               : null,
                           child: Text(
                             "ID: ${post.id}",
-                            style: const TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: textH3,
                           ),
                         ),
                       ),
@@ -80,25 +78,16 @@ class CustomPostList extends StatelessWidget {
                   const SizedBox(height: 5),
                   const Text(
                     'Title',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: text5,
                   ),
                   Text(
                     post.title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: text6,
                   ),
                   const SizedBox(height: 5),
                   const Text(
                     'Description',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: text5,
                   ),
                   ReadMoreText(
                     post.body,
@@ -107,10 +96,8 @@ class CustomPostList extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Show more',
                     trimExpandedText: ' Show less',
-                    lessStyle: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.bold),
-                    moreStyle: const TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.bold),
+                    lessStyle: text7,
+                    moreStyle: text7,
                   ),
                 ],
               ),
