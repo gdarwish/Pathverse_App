@@ -40,7 +40,7 @@ class CustomCommentBody extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  const Text(
+                  Text(
                     'Name',
                     style: text5,
                   ),
@@ -49,7 +49,7 @@ class CustomCommentBody extends StatelessWidget {
                     style: text6,
                   ),
                   const SizedBox(height: 5),
-                  const Text(
+                  Text(
                     'Email',
                     style: text5,
                   ),
@@ -58,7 +58,7 @@ class CustomCommentBody extends StatelessWidget {
                     style: text6,
                   ),
                   const SizedBox(height: 5),
-                  const Text(
+                  Text(
                     'Comment',
                     style: text5,
                   ),

@@ -35,7 +35,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: Text('Comments'),
+        title: const Text('Comments'),
       ),
       body: BlocProvider(
         create: (context) => commentBloc,

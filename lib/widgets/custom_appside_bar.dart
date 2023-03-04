@@ -38,16 +38,16 @@ class CustomAppSideBar extends StatelessWidget {
           ),
         ),
       ),
-      items: [
+      items: const [
         SidebarXItem(
           icon: Icons.home,
-          label: 'Home',
+          label: '  Home',
         ),
       ],
       footerItems: [
         SidebarXItem(
             icon: Icons.output_rounded,
-            label: 'Sign Out',
+            label: '  Sign Out',
             onTap: () {
               Get.toNamed(LoginScreen.route);
             }),

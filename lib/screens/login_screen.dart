@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       body: Center(
         child: Container(
           decoration: BoxDecoration(
@@ -26,13 +27,13 @@ class LoginScreen extends StatelessWidget {
               BoxShadow(
                 color: secondaryColor,
                 blurRadius: 4,
-                offset: Offset(4, 8),
+                offset: Offset(4, 6),
               ),
             ],
           ),
           padding: const EdgeInsets.all(20),
-          width: MediaQuery.of(context).size.width / 2,
-          height: 305,
+          width: 310,
+          height: 315,
           child: Form(
             key: _formKey,
             child: Column(
@@ -41,13 +42,13 @@ class LoginScreen extends StatelessWidget {
                 Image.asset('assets/images/logo.png'),
                 const SizedBox(height: 20),
                 CustomTextField(
-                  hintText: 'email',
+                  hintText: 'Email',
                   onChanged: (emailNewValue) {
                     email = emailNewValue;
                   },
                   validator: emailValidation,
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 20),
                 CustomTextField(
                   hintText: 'Password',
                   onChanged: (passwordNewValue) {
@@ -55,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   validator: passwordValidation,
                 ),
-                const SizedBox(height: 15),
+                const SizedBox(height: 20),
                 CustomButton(
                   primaryColor: primaryColor,
                   buttonText: 'Login',

@@ -54,6 +54,9 @@ dev_dependencies:
   readmore: ^2.1.0
   sidebarx: ^0.14.0
   get: ^4.6.5
+  number_paginator: ^0.2.3
+  google_fonts: ^3.0.1
+
 
 
 # For information on the generic Dart part of this file, see the

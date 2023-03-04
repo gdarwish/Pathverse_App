@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:number_paginator/number_paginator.dart';
 import 'package:pathverse_app/helper/app_colors.dart';
-import 'package:pathverse_app/helper/app_text.dart';
+import 'package:pathverse_app/helper/list_pagination.dart';
+import 'package:pathverse_app/widgets/custom_post_card.dart';
 import 'package:pathverse_app/models/post.dart';
-import 'package:pathverse_app/screens/comment_screen.dart';
-import 'package:pathverse_app/screens/user_posts_screen.dart';
-import 'package:pathverse_app/widgets/custom_button.dart';
-import 'package:readmore/readmore.dart';
-import 'package:get/get.dart';
 
-class CustomPostList extends StatelessWidget {
+class CustomPostList extends StatefulWidget {
   final List<Post> postList;
   final bool isUserPostScreen;
   const CustomPostList({
@@ -18,93 +15,55 @@ class CustomPostList extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<CustomPostList> createState() => _CustomPostListState();
+}
+
+class _CustomPostListState extends State<CustomPostList> {
+  //* Pagination List Number of item
+  final int _numOfItems = 20;
+  late final _numOfPages = widget.postList.numOfPages(_numOfItems);
+  int _currentPage = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: ListView.builder(
-        itemCount: postList.length,
-        itemBuilder: ((context, index) {
-          final post = postList[index];
-          return Card(
-            elevation: 0,
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          if (!isUserPostScreen) {
-                            Get.toNamed(UserPostsScreen.route,
-                                arguments: post.id);
-                          }
-                        },
-                        child: Container(
-                          decoration: !isUserPostScreen
-                              ? const BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                        width: 1.0, color: Colors.blue),
-                                  ),
-                                )
-                              : null,
-                          child: Text(
-                            "ID: ${post.id}",
-                            style: textH3,
-                          ),
-                        ),
-                      ),
-                      if (isUserPostScreen)
-                        CustomButton(
-                          customWidth: 110,
-                          primaryColor: secondaryColor,
-                          buttonText: 'Comments',
-                          elevation: 1,
-                          textColor: Colors.white,
-                          onTap: () {
-                            Get.toNamed(CommentsScreen.route,
-                                arguments: post.id);
-                          },
-                        )
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  const Text(
-                    'Title',
-                    style: text5,
-                  ),
-                  Text(
-                    post.title,
-                    style: text6,
-                  ),
-                  const SizedBox(height: 5),
-                  const Text(
-                    'Description',
-                    style: text5,
-                  ),
-                  ReadMoreText(
-                    post.body,
-                    trimLines: 2,
-                    colorClickableText: Colors.pink,
-                    trimMode: TrimMode.Line,
-                    trimCollapsedText: 'Show more',
-                    trimExpandedText: ' Show less',
-                    lessStyle: text7,
-                    moreStyle: text7,
-                  ),
-                ],
-              ),
-            ),
-          );
-        }),
+    final List<Post> subList =
+        widget.postList.paginate(page: _currentPage, numOfItems: _numOfItems);
+
+    final child = Container(
+      padding: const EdgeInsets.all(25),
+      child: SingleChildScrollView(
+        child: Column(
+          children: subList.map((post) {
+            return CustomPostCard(
+                post: post, isUserPostScreen: widget.isUserPostScreen);
+          }).toList(),
+        ),
       ),
     );
+
+    return !widget.isUserPostScreen
+        ? Scaffold(
+            body: child,
+            bottomNavigationBar: NumberPaginator(
+              numberPages: _numOfPages,
+              onPageChange: (int index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              config: const NumberPaginatorUIConfig(
+                buttonSelectedBackgroundColor: primaryColor,
+              ),
+            ),
+          )
+        : ListView.builder(
+            padding: const EdgeInsets.all(25),
+            itemCount: widget.postList.length,
+            itemBuilder: ((context, index) {
+              final post = widget.postList[index];
+              return CustomPostCard(
+                  post: post, isUserPostScreen: widget.isUserPostScreen);
+            }),
+          );
   }
 }
