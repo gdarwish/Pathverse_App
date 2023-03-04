@@ -4,14 +4,16 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+<img src="https://github.com/gdarwish/Pathverse_App/blob/staging/screenshots/Screenshot%202023-03-04%20at%202.33.54%20AM.png?raw=true" width="300" height="400">
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://github.com/gdarwish/Pathverse_App/blob/staging/screenshots/Screenshot%202023-03-04%20at%202.33.58%20AM.png?raw=true" width="300" height="400">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<img src="https://github.com/gdarwish/Pathverse_App/blob/staging/screenshots/Screenshot%202023-03-04%20at%202.34.17%20AM.png?raw=true" width="300" height="400">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/gdarwish/Pathverse_App/blob/staging/screenshots/Screenshot%202023-03-04%20at%202.34.19%20AM.png?raw=true" width="300" height="400">
+
+<img src="https://github.com/gdarwish/Pathverse_App/blob/staging/screenshots/Screenshot%202023-03-04%20at%202.37.47%20AM.png?raw=true" width="300" height="400">
+
+<img src="https://github.com/gdarwish/Pathverse_App/blob/staging/screenshots/Screenshot%202023-03-04%20at%202.37.49%20AM.png?raw=true" width="300" height="400">
+
 # Pathverse_App
